@@ -1,0 +1,28 @@
+﻿<p>
+    <b>Name: </b><span>@pupil.Name</span><br />
+
+    @if(EmailShow)
+    {
+    <b>Email: </b><i>@pupil.Email</i/><br />
+
+    }
+
+    @if(displayInfo){
+        <span>@pupil.Name 's age is @pupil.Age</span>
+    }
+    <br />
+    <button @onclick="@(() => {displayInfo = !displayInfo; })">Show Info </button>
+</p>
+
+
+@code {
+    [Parameter]
+    public People pupil { get; set; }
+
+    [Parameter]
+    public bool EmailShow { get; set; }
+
+
+    private bool displayInfo = false;
+
+}

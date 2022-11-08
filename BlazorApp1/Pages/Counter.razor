@@ -1,0 +1,38 @@
+﻿@page "/counter"
+@using BlazorApp1.Pages.Components
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @t</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+@if(@peoples[t] != null)
+{
+        <Component1 Name="@peoples[t].Name" Email="@peoples[t].Email" > </Component1>
+}
+else{
+    <p>Not data</p>
+}
+@code {
+    private int t = 0;
+
+    private void IncrementCount()
+    {
+        t++;
+    }
+
+    private List<People> peoples;
+
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        peoples = new List<People>()
+        {
+            new People{Name="Asilbek", Job="Doctor", Age =20,Email="asilbek@gmil.com" },
+            new People{Name="Avazbek", Job="Xacer", Age=34, Email="weraee@yahoo.com" },
+            new People{Name="Ali", Job="Student", Age=22, Email="ali@mail.com" }
+        };
+    }
+
+}

@@ -1,0 +1,32 @@
+﻿@page "/"
+@using BlazorApp1.Pages.Components
+
+<input type="checkbox" @onchange="@( () => {emailShow=!emailShow;})" /><label>Show Email</label>
+@foreach (var item in humans){
+    <Component1 pupil="@item" EmailShow=@emailShow ></Component1>
+}
+<br />
+<MyTextBox @attributes="keys" ></MyTextBox>
+
+@code {
+    public List<People> humans;
+
+    private bool emailShow = false;
+    private Dictionary<string, object> keys = new Dictionary<string, object>()
+    {
+       { "placeholder", "Name" },
+       {"type", "text"}
+
+    };
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        humans = new List<People>()
+        {
+            new People{Name="Asilbek", Job="Doctor", Age =20,Email="asilbek@gmil.com" },
+            new People{Name="Avazbek", Job="Xacer", Age=34, Email="weraee@yahoo.com" },
+            new People{Name="Ali", Job="Student", Age=22, Email="ali@mail.com" }
+        };
+    }
+
+}
