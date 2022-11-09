@@ -1,17 +1,19 @@
 ﻿<p>
-    <b>Name: </b><span>@pupil.Name</span><br />
+    <b>Name: </b><span>@pupil.Name</span>
 
     @if(EmailShow)
     {
-    <b>Email: </b><i>@pupil.Email</i/><br />
+     <br /> <b>Email: </b><i>@pupil.Email</i/>
 
     }
 
     @if(displayInfo){
-        <span>@pupil.Name 's age is @pupil.Age</span>
+      <br />  <span>@pupil.Name 's age is @pupil.Age</span>
     }
     <br />
     <button @onclick="@(() => {displayInfo = !displayInfo; })">Show Info </button>
+    <br />
+    <button @onclick= "@( ()=> {DeleteP.InvokeAsync(pupil);})">Delete</button>
 </p>
 
 
@@ -21,6 +23,8 @@
 
     [Parameter]
     public bool EmailShow { get; set; }
+    [Parameter]
+    public EventCallback<People> DeleteP { get; set; }
 
 
     private bool displayInfo = false;

@@ -1,0 +1,28 @@
+﻿@if (humans is null)
+{
+    <br /><span>Loading... </span> <br />
+}
+else if(humans.Count == 0)
+{
+    <br /><span>Data is not</span><br />
+}
+else
+{
+@foreach (var item in humans)
+{
+    <Component1 pupil="@item" EmailShow=@emailShow DeleteP="@DeletePupil"></Component1>
+}
+<br />
+}
+@code {
+    [Parameter]
+    public List<People> humans { get; set; }
+    [Parameter]
+    public bool emailShow  {get;set;}
+
+    private void DeletePupil(People pupil)
+    {
+        humans.Remove(pupil);
+    }
+
+}
